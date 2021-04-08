@@ -21,3 +21,52 @@ void DisplayMenu()
          << "6. Exit\n"
          << "Enter your choice: ";
 }
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+
+const int x = 30;           //Number of columns used for seating chart array
+const int y = 15;           //Number of rows used for seating chart array
+char seatingChart[x][y];    //Seating chart array (x = columns, y = rows)
+void displayChart();        //Seating chart function
+char Available = '#';       //Symbol used for an available seat
+char Taken = '*';           //Symbol used for a taken seat
+
+int main()
+{   //Use these variables to test mapping seat availibilty into the seatingChart array
+	int ROW = 14;
+	int COLUMN = 29;
+	
+	//Set initial value of all seats to "Available" (#)
+	for(int rows = 0; rows < x; rows++){
+		for(int columns = 0; columns < y; columns++)
+			seatingChart[rows][columns] = Available;}
+
+	seatingChart[ROW][COLUMN] = Taken;
+
+	//Main menu would call for Seating chart, displayChart input condition would go true (example: if menu = 4 , then run displayChart function)
+	displayChart();
+	return 0;
+}
+//displayChart function definition
+void displayChart(){   
+	
+	//Seating chart array header/column numbers
+	cout << "         1| 2| 3| 4| 5| 6| 7| 8| 9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30" << endl;
+	cout << "         ----------------------------------------------------------------------------------------";
+
+	//Double nested for loop generates 15 rows and 30 columns
+	//Added the word Row at the beginning of each line within the seating chart array
+	//std::setw(2) is used for y axis header alignment of the seating chart
+	for(int row = 0; row < 15; row++){
+		cout << endl;
+		std::cout << "Row: " << std::setw(2) << row + 1;
+
+		//Added 2 spaces into the array for each seat to help with seating availability alignment
+		for(int column = 0; column < 30; column++){
+			cout << "  " << seatingChart[row][column];}
+	}
+}
+
