@@ -68,3 +68,26 @@ void DisplayMenu()
          << "6. Exit\n"
          << "Enter your choice: ";
 }
+
+
+
+//Get seat info from user (Asma)
+
+void TicketsPurchased(char SeatingArray[ROWS][COLS])
+{
+	int NumOfSeats;
+	int RowNum;
+	int ColNum;
+
+	cout << "How many seats would you like to purchase? ";
+	cin >> userSeats;
+	cout << "In which row would you like to sit? ";
+	cin >> userRow;
+	cout << "What seat number would you like to sit? ";
+	cin >> userCol;
+	if (NumOfSeats == 1)
+	{
+		seatingArray[RowNum][ColNum]
+
+	}
+
