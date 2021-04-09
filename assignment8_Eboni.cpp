@@ -1,14 +1,12 @@
 
 #include <iostream>
 #include <iomanip>
+#include<fstream>
 using namespace std;
 
 //function prototype
-void DisplayMenu()
-
-
-
-
+void DisplayMenu();
+void totalTicketSale();
 
 const int x = 30;           //Number of columns used for seating chart array
 const int y = 15;           //Number of rows used for seating chart array
@@ -90,4 +88,30 @@ void TicketsPurchased(char SeatingArray[ROWS][COLS])
 		seatingArray[RowNum][ColNum]
 
 	}
+}
+
+void totalTicketSale(char seatingArray[30][15], int row, int col){
+	
+	double total = 0, priceArray[15];
+	ifstream inputFile("prices.txt");
+
+	//for fill array with pricing info from file
+	for (int rowCounter = 0; rowCounter < 15; rowCounter++) {
+			inputFile >> priceArray[rowCounter];
+	}
+	
+	//increment through 2D array, every time a seat is shown as taken the price for that particular row is added to the running total of "total"
+	for (int seatCounter = 0; seatCounter < 30; seatCounter++){
+		for (int rowCounter = 0; rowCounter < 15; rowCounter++){
+			if (seatingArray[seatCounter][rowCounter] == '*'){
+				total += priceArray[rowCounter];
+			}
+		}
+	}
+	
+	inputFile.close();
+
+	cout << "The current total is $" << fixed << setprecision(2) << total << endl;
+}
+
 
