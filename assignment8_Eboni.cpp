@@ -7,6 +7,7 @@ using namespace std;
 //function prototype
 void DisplayMenu();
 void totalTicketSale();
+void storeRowPrices();
 
 const int x = 30;           //Number of columns used for seating chart array
 const int y = 15;           //Number of rows used for seating chart array
@@ -90,9 +91,32 @@ void TicketsPurchased(char SeatingArray[ROWS][COLS])
 	}
 }
 
+void storeRowPrices() {
+	//priceArray to temporarily store user declared values to later load into file
+	double priceArray[15];
+
+	//for loop to cycle through each row/array element while prompting user for price of each row
+	for (int counter = 0; counter < 15; counter++) {
+		cout << "Please enter the cost for a seat in row " << counter + 1 << ": $";
+		cin >> priceArray[counter];
+	}
+
+	//define and open file for output, searches for/creates text file named "prices.txt"
+	ofstream outputFile("prices.txt");
+
+	//for loop to iterate through each array element and write to file with endline separating each entry
+	for (int counter = 0; counter < 15; counter++) {
+		outputFile << priceArray[counter] << endl;
+	}
+
+	//close outputFile
+	outputFile.close();
+}
+
 void totalTicketSale(char seatingArray[30][15], int row, int col){
 	
 	double total = 0, priceArray[15];
+	//define and open "prices.txt" as inputFile
 	ifstream inputFile("prices.txt");
 
 	//for fill array with pricing info from file
@@ -109,6 +133,7 @@ void totalTicketSale(char seatingArray[30][15], int row, int col){
 		}
 	}
 	
+	//close inputFile
 	inputFile.close();
 
 	cout << "The current total is $" << fixed << setprecision(2) << total << endl;
