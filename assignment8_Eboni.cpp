@@ -16,8 +16,57 @@ void displayChart();        //Seating chart function
 char Available = '#';       //Symbol used for an available seat
 char Taken = '*';           //Symbol used for a taken seat
 
+// constants for menu values
+const int PURCHASE = 1,
+	  TOATL_TIX_SALES_DOLS = 2,
+	  TOTAL_TIX_SOLD = 3,
+	  SEAT_AVAILABILITY_ROWS = 4,
+ 	  SEAT_AVAILABILITY_AUD = 5,
+	  EXIT_CHOICE = 6;
+// choice variable for user input
+char choice;
+		
+
 int main()
-{   //Use these variables to test mapping seat availibilty into the seatingChart array
+{   do
+{
+    DisplayMenu();
+    cin >> choice;
+
+    while (choice < PURCHASE || CHOICE > EXIT_CHOICE)
+    {
+        cout << "Please enter a valid menu choice: ";
+        cin >> choice;
+    }
+
+    if (choice != EXIT_CHOICE)
+    {
+        cout << "Enter seat price for each row: ";
+        cin >> seat_price;
+
+    }
+
+    switch (choice)
+    {
+    case PURCHASE:
+        //purchase function
+        break;
+    case TOTAL_TIX_SALES_DOLS:
+        //total tix sales function
+        break;
+    case TOTAL_TIX_SOLD:
+        //total tix function
+        break;
+    case SEAT_AVAILABILITY_ROWS:
+        //seat avaiablity row function
+        break;
+    case SEAT_AVAILABILITY_AUD:
+        //seat availablity auditorium function
+    }
+
+}while (choice != EXIT_CHOICE);
+return 0;
+	//Use these variables to test mapping seat availibilty into the seatingChart array
 	int ROW = 14;
 	int COLUMN = 29;
 	
