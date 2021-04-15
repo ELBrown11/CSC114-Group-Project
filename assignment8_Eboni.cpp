@@ -22,9 +22,11 @@ int main()
 	int COLUMN = 29;
 	
 	//Set initial value of all seats to "Available" (#)
-	for(int rows = 0; rows < x; rows++){
+	for(int rows = 0; rows < x; rows++)
+	{
 		for(int columns = 0; columns < y; columns++)
-			seatingChart[rows][columns] = Available;}
+			seatingChart[rows][columns] = Available;
+	}
 
 	seatingChart[ROW][COLUMN] = Taken;
 
@@ -113,21 +115,26 @@ void storeRowPrices() {
 	outputFile.close();
 }
 
-void totalTicketSale(char seatingArray[30][15], int row, int col){
+void totalTicketSale(char seatingArray[30][15], int row, int col)
+{
 	
 	double total = 0, priceArray[15];
 	//define and open "prices.txt" as inputFile
 	ifstream inputFile("prices.txt");
 
 	//for fill array with pricing info from file
-	for (int rowCounter = 0; rowCounter < 15; rowCounter++) {
+	for (int rowCounter = 0; rowCounter < 15; rowCounter++) 
+	{
 			inputFile >> priceArray[rowCounter];
 	}
 	
 	//increment through 2D array, every time a seat is shown as taken the price for that particular row is added to the running total of "total"
-	for (int seatCounter = 0; seatCounter < 30; seatCounter++){
-		for (int rowCounter = 0; rowCounter < 15; rowCounter++){
-			if (seatingArray[seatCounter][rowCounter] == '*'){
+	for (int seatCounter = 0; seatCounter < 30; seatCounter++)
+	{
+		for (int rowCounter = 0; rowCounter < 15; rowCounter++)
+		{
+			if (seatingArray[seatCounter][rowCounter] == '*')
+			{
 				total += priceArray[rowCounter];
 			}
 		}
